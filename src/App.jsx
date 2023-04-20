@@ -1,9 +1,7 @@
 import React from 'react';
 import { Routes, BrowserRouter as Router, Route } from 'react-router-dom';
 import * as ROUTES from './constants/routes';
-import { Home } from './pages';
-import Signin from './pages/Signin';
-import Signup from './pages/Signup';
+import { Home, Signin, Signup } from './pages';
 
 export default function App() {
   return (
