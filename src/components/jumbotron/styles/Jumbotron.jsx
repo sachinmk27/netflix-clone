@@ -38,6 +38,10 @@ export const Pane = styled.div`
     padding: 0 45px;
     text-align: center;
   }
+
+  @media (max-width: 600px) {
+    text-align: left;
+  }
 `;
 
 export const Title = styled.h1`

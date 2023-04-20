@@ -13,6 +13,10 @@ export const Container = styled.div`
     align-items: center;
     justify-content: center;
   }
+
+  @media (max-width: 600px) {
+    align-items: start;
+  }
 `;
 
 export const Input = styled.input`
@@ -71,5 +75,6 @@ export const Text = styled.p`
   @media (max-width: 600px) {
     font-size: 16px;
     line-height: 22px;
+    text-align: left;
   }
 `;
