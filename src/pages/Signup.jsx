@@ -1,7 +1,11 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { createUserWithEmailAndPassword, getAuth } from 'firebase/auth';
+import {
+  createUserWithEmailAndPassword,
+  getAuth,
+  updateProfile,
+} from 'firebase/auth';
 
 import HeaderContainer from '../containers/Header';
 import FooterContainer from '../containers/Footer';
@@ -21,12 +25,19 @@ export default function Signup() {
     event.preventDefault();
     const auth = getAuth();
     createUserWithEmailAndPassword(auth, emailAddress, password)
-      .then((userCredential) => {
+      .then((resp) =>
+        updateProfile(resp.user, {
+          displayName: firstName,
+          photoURL: Math.floor(Math.random() * 5) + 1,
+        })
+      )
+      .then(() => {
         navigate(ROUTES.SIGN_IN);
       })
       .catch((err) => {
         setEmailAddress('');
         setPassword('');
+        setFirstName('');
         setError(err.message);
       });
   };
