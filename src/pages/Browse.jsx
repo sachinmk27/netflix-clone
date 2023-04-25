@@ -2,10 +2,11 @@
 import React from 'react';
 import { useContent } from '../hooks';
 import selectionFilter from '../utils/selection-filter';
+import BrowserContainer from '../containers/Browse';
 
 export default function Browse() {
   const { series } = useContent('series');
   const { films } = useContent('films');
   const slides = selectionFilter({ series, films });
-  return <div>{JSON.stringify({ series, films }, null, 2)}</div>;
+  return <BrowserContainer slides={slides} />;
 }
