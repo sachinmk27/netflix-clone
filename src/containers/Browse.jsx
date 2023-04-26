@@ -5,7 +5,7 @@ import React, { useEffect, useState } from 'react';
 import { getAuth } from 'firebase/auth';
 import SelectProfileContainer from './Profile';
 import FooterContainer from './Footer';
-import { Header, Loading, Card } from '../components';
+import { Header, Loading, Card, Player } from '../components';
 import * as ROUTES from '../constants/routes';
 
 import logo from '../logo.svg';
@@ -98,11 +98,10 @@ export default function BrowserContainer({ slides }) {
               ))}
             </Card.Entities>
             <Card.Feature category={category}>
-              {/* <Player>
+              <Player>
                 <Player.Button />
                 <Player.Video src="/videos/bunny.mp4" />
-              </Player> */}
-              <p>Hello</p>
+              </Player>
             </Card.Feature>
           </Card>
         ))}
