@@ -2,6 +2,7 @@
 /* eslint-disable no-nested-ternary */
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from 'react';
+import Fuse from 'fuse.js';
 import { getAuth } from 'firebase/auth';
 import SelectProfileContainer from './Profile';
 import FooterContainer from './Footer';
@@ -25,7 +26,18 @@ export default function BrowserContainer({ slides }) {
     }, 3000);
   }, [profile?.displayName]);
 
-  const slideRows = slides[category];
+  let slideRows = slides[category];
+
+  const fuse = new Fuse(slideRows, {
+    keys: ['data.description', 'data.genre', 'data.title'],
+  });
+
+  const results = fuse.search(searchTerm).map(({ item }) => item);
+  if (slideRows.length > 0 && searchTerm.length > 3 && results.length > 0) {
+    slideRows = results;
+  } else {
+    slideRows = slides[category];
+  }
 
   return profile?.displayName ? (
     <>
